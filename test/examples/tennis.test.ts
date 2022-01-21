@@ -1,11 +1,16 @@
 import { expect } from "chai"
 
 class Game {
-  score1: string = "love"
-  score2: string = "love"
 
-  addPointToPlayer1() {
+  private score1: string = "love"
+  private score2: string = "love"
+
+  player1DoesPoint() {
     this.score1 = "15"
+  }
+
+  player2DoesPoint() {
+    this.score2 = "15"
   }
 
   score() {
@@ -27,10 +32,20 @@ describe("Tennis", () => {
     const game = new Game()
 
     // act
-    game.addPointToPlayer1()
+    game.player1DoesPoint()
     
     // assert
     const score = game.score()
     expect(score).eql("15-love")
   })
+
+  it("If player 2 make a point score must be 15-15", () => {
+   const game = new Game()
+   game.player1DoesPoint()
+   
+   game.player2DoesPoint()
+
+   const score = game.score()
+   expect(score).eql("15-15")
+ })
 })
