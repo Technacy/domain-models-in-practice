@@ -7,15 +7,16 @@ class Game {
   private score2: Score = "love"
 
   player1DoesPoint() {
-    if (this.score1 === "15") {
-      this.score1 = "30"
-    } else {
-      this.score1 = "15"
-    }
+    this.score1 = Game.increaseScore(this.score1)
   }
 
   player2DoesPoint() {
-    this.score2 = "15"
+    this.score2 = Game.increaseScore(this.score2)
+  }
+
+  private static increaseScore(score: Score): Score {
+    if (score === "15") return "30"
+    return "15"
   }
 
   score() {
@@ -54,7 +55,7 @@ describe("Tennis", () => {
     expect(score).eql("15-15")
   })
 
-  it("If player 1 make 2 point and player 1 make a point score must be 30-15", () => {
+  it("If player 1 make 2 points and player 2 makes a point score must be 30-15", () => {
     const game = new Game()
     game.player1DoesPoint()
     game.player2DoesPoint()
@@ -63,5 +64,17 @@ describe("Tennis", () => {
 
     const score = game.score()
     expect(score).eql("30-15")
+  })
+
+  it("If player 1 make 2 points and player 2 makes 2 points score must be 30-30", () => {
+    const game = new Game()
+    game.player1DoesPoint()
+    game.player2DoesPoint()
+    game.player1DoesPoint()
+
+    game.player2DoesPoint()
+
+    const score = game.score()
+    expect(score).eql("30-30")
   })
 })
