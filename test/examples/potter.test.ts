@@ -66,4 +66,12 @@ describe(`Calculate amount`, () => {
 
     expect(amount).eq(0)
   })
+
+  it(`buy 2 same books and one different -> amount must be ((8 + 8) - 5%) + 8`, () => {
+    const cart: BookTitle[] = ["b1", "b2", "b1"]
+
+    const amount = calcAmount(cart)
+
+    expect(amount).eq((8 + 8) * 0.95 + 8)
+  })
 })
