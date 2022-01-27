@@ -1,14 +1,14 @@
-import { expect } from "chai"
-import { Person } from "../../src/examples/person"
+// import { expect } from "chai"
+// import { Person } from "../../src/examples/person"
 
-describe("Person", () => {
-  describe("sayHello", () => {
-    it("should return Hello", async () => {
-      const person = new Person("Bob")
+// describe("Person", () => {
+//   describe("sayHello", () => {
+//     it("should return Hello", async () => {
+//       const person = new Person("Bob")
 
-      const res = person.sayHello()
+//       const res = person.sayHello()
 
-      expect(res).eq("Hello, I' Bob")
-    })
-  })
-})
+//       expect(res).eq("Hello, I' Bob")
+//     })
+//   })
+// })
